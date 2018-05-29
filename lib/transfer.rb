@@ -13,6 +13,12 @@ class Transfer
   def valid?
     @sender.valid? && @receiver.valid?
   end
+  
+  # this is a nice elegant method to include:
+  # def reject_transfer
+  #   self.status = "rejected"
+  #   "Transaction rejected. Please check your account balance."
+  # end
 
   def execute_transaction
     if self.valid? && @status == "pending" && @sender.balance > @amount
@@ -36,8 +42,4 @@ class Transfer
     end
   end
 
-  # def reject_transfer
-  #   self.status = "rejected"
-  #   "Transaction rejected. Please check your account balance."
-  # end
 end
